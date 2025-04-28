@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MagicBG - Remove Backgrounds in Seconds</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Favicon -->
+    <link rel="icon" href="https://via.placeholder.com/50" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/selfie_segmentation/selfie_segmentation.js"></script>
+<style>
+       .faq-content {
+      transition: all 0.3s ease;
+      max-height: 0;
+      overflow: hidden;
+    }
+    .faq-content.active {
+      max-height: 500px; /* Adjust based on your content */
+    }
+    .faq-toggle .bi-chevron-down {
+      transition: transform 0.3s ease;
+    }
+    .faq-toggle.active .bi-chevron-down {
+      transform: rotate(180deg);
+    }
+</style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-purple-50">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <i class="bi bi-magic text-2xl text-purple-600 mr-2"></i>
+                    <span class="text-xl font-bold text-gray-800">MagicBG</span>
+                </div>
+                
+                <!-- Primary Nav -->
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="#home" class="nav-link active">Home</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#how-it-works" class="nav-link">How It Works</a>
+                    <a href="#pricing" class="nav-link">Pricing</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#faq" class="nav-link">FAQ</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </div>
+                
+                <!-- Secondary Nav -->
+                <div class="hidden md:flex items-center space-x-3 ml-6">
+                    <a href="#" class="text-gray-600 hover:text-purple-600">
+                        <i class="bi bi-person-circle text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600">
+                        <i class="bi bi-heart text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-purple-600">
+                        <i class="bi bi-cart3 text-xl"></i>
+                    </a>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-600 hover:text-purple-600 focus:outline-none">
+                        <i class="bi bi-list text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="mobile-nav-link block active">Home</a>
+                <a href="#features" class="mobile-nav-link block">Features</a>
+                <a href="#how-it-works" class="mobile-nav-link block">How It Works</a>
+                <a href="#pricing" class="mobile-nav-link block">Pricing</a>
+                <a href="#gallery" class="mobile-nav-link block">Gallery</a>
+                <a href="#faq" class="mobile-nav-link block">FAQ</a>
+                <a href="#contact" class="mobile-nav-link block">Contact</a>
+                <div class="pt-4 border-t">
+                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
+                        <i class="bi bi-person-circle mr-2"></i> Account
+                    </a>
+                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
+                        <i class="bi bi-heart mr-2"></i> Favorites
+                    </a>
+                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
+                        <i class="bi bi-cart3 mr-2"></i> Cart
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="py-16 md:py-24 bg-gradient-to-r from-blue-100 to-purple-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center">
+                <div class="md:w-1/2 animate__animated animate__fadeInLeft">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Remove Backgrounds <span class="text-purple-600">Like Magic</span></h1>
+                    <p class="text-lg text-gray-600 mb-8">Upload your image and get a transparent background in seconds. No credit card required.</p>
+                    <div id="upload-area" class="flex flex-col sm:flex-row gap-4">
+                       <a href="#upload"> <button class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                            <i class="bi bi-upload mr-2"></i> Upload Image
+                        </button></a>
+                        <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-6 rounded-lg border border-gray-300 shadow transition duration-300">
+                            <i class="bi bi-play-circle mr-2"></i> Watch Demo
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center">
+                        <div class="flex -space-x-2">
+                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
+                        </div>
+                        <p class="ml-4 text-gray-600">
+                            <span class="font-semibold">10,000+</span> happy users this month
+                        </p>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0 animate__animated animate__fadeInRight">
+                    <div class="relative bg-white p-4 rounded-xl shadow-xl">
+                        <div class="bg-gray-200 rounded-lg overflow-hidden">
+                            <!-- <img id="hero-image" src="img/shirtnobg.png" alt="Sample" class="w-full h-auto"> --> <video preload="auto" class="w-full h-auto rounded-4xl max-w-[320px] lg:max-w-[420px]" poster="https://sb.kaleidousercontent.com/67418/840x560/686381d375/emilia-poster.jpg" autoplay muted playsinline="true" src="https://sb.kaleidousercontent.com/67418/x/681f13b37d/emilia_compressed.mp4"></video>
+
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 bg-purple-600 text-white px-4 py-2 rounded-lg shadow-lg">
+                            <i class="bi bi-lightning-fill mr-2"></i> AI Powered
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By Section -->
+    <section class="py-8 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-500 mb-6">Trusted by companies worldwide</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <img src="img/adobe.png" alt="Adobe" class="h-8 opacity-60 hover:opacity-100 transition">
+                <img src="img/amazon.png" alt="Amazon" class="h-8 opacity-60 hover:opacity-100 transition">
+                <img src="img/canva.png" alt="Canva" class="h-10 opacity-60 hover:opacity-100 transition">
+                <img src="img/pintrest.png" alt="pintrest" class="h-6 opacity-60 hover:opacity-100 transition" >
+           </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Powerful Features</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Our AI-powered background remover comes with everything you need to create professional images.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-lightning text-2xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Instant Processing</h3>
+                    <p class="text-gray-600">Get results in seconds with our lightning-fast AI technology.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-brush text-2xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Pixel-Perfect Edges</h3>
+                    <p class="text-gray-600">Crisp, clean edges even on complex backgrounds like hair and fur.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-image text-2xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Multiple Formats</h3>
+                    <p class="text-gray-600">Download in PNG, JPG, or SVG with transparent backgrounds.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-sliders text-2xl text-yellow-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Advanced Editing</h3>
+                    <p class="text-gray-600">Fine-tune results with our built-in editor before downloading.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-shield-lock text-2xl text-red-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Privacy First</h3>
+                    <p class="text-gray-600">Your images are automatically deleted after processing.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
+                        <i class="bi bi-cloud-arrow-up text-2xl text-indigo-600"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Cloud Integration</h3>
+                    <p class="text-gray-600">Connect with Dropbox, Google Drive, and more for easy access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How It Works</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Remove backgrounds in just three simple steps.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-purple-100 rounded-full text-purple-600 font-bold text-xl mb-4 mx-auto">
+                        1
+                        <div class="absolute -z-10 w-20 h-20 bg-purple-200 rounded-full opacity-30 animate-ping"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Upload Image</h3>
+                    <p class="text-gray-600">Drag & drop your image or click to browse files from your device.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full text-blue-600 font-bold text-xl mb-4 mx-auto">
+                        2
+                        <div class="absolute -z-10 w-20 h-20 bg-blue-200 rounded-full opacity-30 animate-ping delay-100"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">AI Processing</h3>
+                    <p class="text-gray-600">Our AI automatically removes the background in just a few seconds.</p>
+                </div>
+               
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <div class="relative inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full text-green-600 font-bold text-xl mb-4 mx-auto">
+                        3
+                        <div id="upload" class="absolute -z-10 w-20 h-20 bg-green-200 rounded-full opacity-30 animate-ping delay-200"></div>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Download & Share</h3>
+                    <p class="text-gray-600">Download your image with transparent background or share it directly.</p>
+                </div>
+            </div>
+            
+         <!-- Upload Area -->
+         <div id="upload-container" class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center cursor-pointer hover:border-purple-500 transition duration-300 mb-6">
+            <i class="bi bi-cloud-arrow-up text-4xl text-gray-400 mb-3"></i>
+            <p class="text-gray-600">Drag & drop your image here</p>
+            <p class="text-sm text-gray-500 mt-2">or click to browse files (JPG, PNG up to 5MB)</p>
+            <input type="file" id="file-input" accept="image/*" class="hidden">
+        </div>
+        
+        <!-- Processing Area -->
+        <div id="processing-area" class="hidden">
+            <div class="flex flex-col md:flex-row gap-6">
+                <!-- Original Image -->
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Original Image</h3>
+                    <div class="border rounded-lg overflow-hidden">
+                        <img id="original-image" class="w-full h-auto">
+                    </div>
+                </div>
+                
+                <!-- Result Image -->
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Result</h3>
+                    <div class="border rounded-lg overflow-hidden relative">
+                        <canvas id="result-canvas" class="w-full"></canvas>
+                        <div id="processing-indicator" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+                            <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"></div>
+                            <span class="ml-3 text-white">Removing background...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="mt-6 flex flex-wrap gap-3">
+                <button id="download-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg flex items-center">
+                    <i class="bi bi-download mr-2"></i> Download PNG
+                </button>
+                <button id="try-another-btn" class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg flex items-center">
+                    <i class="bi bi-arrow-repeat mr-2"></i> Try Another
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Simple, Transparent Pricing</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Choose the plan that works best for you and your needs.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Free Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Free</h3>
+                        <p class="text-gray-600 mb-4">For casual users and testing</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">$0</span>
+                            <span class="text-gray-600">/forever</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>5 images per month</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Standard quality</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>PNG downloads</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="bi bi-x-circle-fill mr-2"></i>
+                                <span>No HD quality</span>
+                            </li>
+                            <li class="flex items-center text-gray-400">
+                                <i class="bi bi-x-circle-fill mr-2"></i>
+                                <span>No batch processing</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-3 px-4 rounded-lg transition duration-300">
+                            Get Started
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Pro Plan -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-500 transform hover:scale-105 transition duration-300 relative">
+                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
+                        POPULAR
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Pro</h3>
+                        <p class="text-gray-600 mb-4">For professionals and businesses</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">$9</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>100 images per month</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>HD quality</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Multiple formats</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Batch processing (5 at once)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Priority support</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-4 rounded-lg transition duration-300">
+                            Start Free Trial
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Enterprise Plan -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-1">Enterprise</h3>
+                        <p class="text-gray-600 mb-4">For high-volume needs</p>
+                        <div class="mb-6">
+                            <span class="text-4xl font-bold text-gray-800">$29</span>
+                            <span class="text-gray-600">/month</span>
+                        </div>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Unlimited images</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Ultra HD quality</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>All formats including SVG</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Batch processing (50 at once)</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="bi bi-check-circle-fill text-green-500 mr-2"></i>
+                                <span>Dedicated support</span>
+                            </li>
+                        </ul>
+                        <button class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-3 px-4 rounded-lg transition duration-300">
+                            Contact Sales
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Need something different? We offer custom plans for large teams.</p>
+                <button class="text-purple-600 hover:text-purple-800 font-medium">
+                    <i class="bi bi-chat-square-text mr-2"></i> Contact our sales team
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Gallery</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">See what our users have created with MagicBG</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?portrait" alt="Gallery 1" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?product" alt="Gallery 2" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?animal" alt="Gallery 3" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?fashion" alt="Gallery 4" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?food" alt="Gallery 5" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?nature" alt="Gallery 6" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?architecture" alt="Gallery 7" class="w-full h-full object-cover">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://source.unsplash.com/random/300x300?tech" alt="Gallery 8" class="w-full h-full object-cover">
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-3 px-6 rounded-lg border border-gray-300 shadow transition duration-300 inline-flex items-center">
+                    <i class="bi bi-arrow-repeat mr-2"></i> Load More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What Our Users Say</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Don't just take our word for it - hear from our satisfied customers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Sarah Johnson</h4>
+                            <p class="text-gray-600 text-sm">E-commerce Store Owner</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-3">
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"MagicBG has saved me countless hours of manual editing. The quality is amazing, especially for product photos with complex edges."</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Michael Chen</h4>
+                            <p class="text-gray-600 text-sm">Graphic Designer</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-3">
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"I've tried many background removers, but MagicBG is by far the most accurate. It handles hair and fur better than any other tool I've used."</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Emily Rodriguez</h4>
+                            <p class="text-gray-600 text-sm">Marketing Manager</p>
+                        </div>
+                    </div>
+                    <div class="flex mb-3">
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                        <i class="bi bi-star-fill text-yellow-400"></i>
+                    </div>
+                    <p class="text-gray-600">"Our marketing team uses MagicBG daily. The batch processing feature has been a game-changer for our social media content creation."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+     <!-- FAQ Section -->
+  <div id="faq" class="bg-white py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <div class="text-center">
+      <h2 class="text-base text-primary-600 font-semibold tracking-wide uppercase">FAQs</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        Frequently asked questions
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
+        Everything you need to know about the AI Text Behind Image Generator.
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <div class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">How does MagicBG remove backgrounds?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            MagicBG uses advanced artificial intelligence to analyze your image and distinguish between the foreground and background. Our AI has been trained on millions of images to accurately detect edges, even in complex cases like hair, fur, or transparent objects.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 2 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">What image formats do you support?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            We support JPG, PNG, and WEBP formats for uploads. You can download your processed images as PNG (with transparency), JPG (with white or custom background), or SVG (for Pro and Enterprise users).
+          </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">Is there a file size limit?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            Yes, the maximum file size is 10MB for free users and 25MB for Pro and Enterprise users. If you need to process larger files, please contact our support team for assistance.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">How long do you keep my images?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            We automatically delete all uploaded images and processed results from our servers after 24 hours. We don't store your images long-term or use them for any purpose other than background removal.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">Can I use MagicBG for commercial purposes?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            Absolutely! All images processed through MagicBG are free to use for personal and commercial purposes. You don't need to credit us, though we always appreciate it if you do.
+          </div>
+        </div>
+        
+        <!-- FAQ Item 6 -->
+        <div class="border border-gray-200 rounded-lg overflow-hidden">
+          <button class="faq-toggle w-full flex justify-between items-center p-4 text-left bg-gray-50 hover:bg-gray-100 transition duration-300">
+            <span class="font-medium text-gray-800">What if I'm not satisfied with the results?</span>
+            <i class="bi bi-chevron-down text-gray-600 transition-transform duration-300"></i>
+          </button>
+          <div class="faq-content p-4 text-gray-600">
+            Our built-in editor allows you to manually refine the results if needed. If you're still not satisfied, we offer a 30-day money-back guarantee for all paid plans. Just contact our support team within 30 days of purchase for a full refund.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+            
+            <div class="mt-12 text-center">
+                <p class="text-gray-600 mb-4">Still have questions? We're here to help!</p>
+                <button class="text-purple-600 hover:text-purple-800 font-medium">
+                    <i class="bi bi-envelope mr-2"></i> Contact Support
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Remove Backgrounds Like a Pro?</h2>
+            <p class="text-xl mb-8 opacity-90">Join thousands of creators, marketers, and businesses who use MagicBG to save time and create stunning images.</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <button class="bg-white hover:bg-gray-100 text-purple-600 font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 transform hover:scale-105">
+                    <i class="bi bi-upload mr-2"></i> Try It Free Now
+                </button>
+                <button class="bg-transparent hover:bg-white hover:bg-opacity-10 border border-white text-white font-semibold py-3 px-6 rounded-lg transition duration-300">
+                    <i class="bi bi-play-circle mr-2"></i> Watch Demo
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Have questions or feedback? We'd love to hear from you!</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Send us a message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-purple-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 px-6 rounded-lg shadow transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-purple-100 rounded-lg p-3">
+                                <i class="bi bi-envelope text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Email</h4>
+                                <p class="text-gray-600">support@magicbg.com</p>
+                                <p class="text-gray-600">sales@magicbg.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-blue-100 rounded-lg p-3">
+                                <i class="bi bi-telephone text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+1 (555) 123-4567 (Support)</p>
+                                <p class="text-gray-600">+1 (555) 987-6543 (Sales)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-lg p-3">
+                                <i class="bi bi-geo-alt text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Address</h4>
+                                <p class="text-gray-600">123 AI Street, Suite 456</p>
+                                <p class="text-gray-600">San Francisco, CA 94107</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-yellow-100 rounded-lg p-3">
+                                <i class="bi bi-clock text-yellow-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h4 class="text-lg font-medium text-gray-800">Hours</h4>
+                                <p class="text-gray-600">Monday - Friday: 9am - 6pm PST</p>
+                                <p class="text-gray-600">Saturday - Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="text-lg font-medium text-gray-800 mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="social-icon bg-blue-600 hover:bg-blue-700">
+                                <i class="bi bi-facebook"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-blue-400 hover:bg-blue-500">
+                                <i class="bi bi-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-pink-600 hover:bg-pink-700">
+                                <i class="bi bi-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-red-600 hover:bg-red-700">
+                                <i class="bi bi-youtube"></i>
+                            </a>
+                            <a href="#" class="social-icon bg-gray-800 hover:bg-black">
+                                <i class="bi bi-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-5 gap-8 mb-12">
+                <!-- Column 1 -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-4">
+                        <i class="bi bi-magic text-2xl text-purple-400 mr-2"></i>
+                        <span class="text-xl font-bold">MagicBG</span>
+                    </div>
+                    <p class="text-gray-400 mb-4">The fastest, most accurate background remover powered by AI.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="bi bi-facebook text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="bi bi-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="bi bi-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="bi bi-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Changelog</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Community</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Tutorials</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Webinars</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 5 -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">GDPR</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">CCPA</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="md:flex md:justify-between md:items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 MagicBG. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 opacity-0 invisible hover:bg-purple-700">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
