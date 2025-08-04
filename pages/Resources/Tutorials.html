@@ -1,0 +1,105 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Remove Background from Image Online | MagicBG Tutorials</title>
+  <meta name="description" content="Learn how to easily remove background from any image online using MagicBG. Upload, edit, and download in seconds with this step-by-step tutorial.">
+  <meta name="keywords" content="remove background from image, background remover online, image background remover, how to remove background, MagicBG tutorial">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script type="module">
+    import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+    window.addEventListener('DOMContentLoaded', () => createIcons({ icons }));
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+    h2 {
+      @apply text-2xl font-bold text-cyan-400 mb-2;
+    }
+    p {
+      @apply text-gray-300 mb-4;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Tutorials Content -->
+  <section class="container mx-auto px-6 py-16 flex-grow animate__animated animate__fadeIn">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl md:text-5xl font-extrabold text-cyan-400">How to Remove Background from an Image Online</h1>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-4">Follow this simple step-by-step tutorial using <strong>MagicBG</strong> to instantly remove the background from any image using advanced AI—no design skills needed!</p>
+    </div>
+
+    <div id="steps" class="max-w-4xl mx-auto space-y-10">
+      <!-- JS will inject tutorial steps here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer" class="mt-auto"></div>
+<script src="/pages/script.js"></script>
+
+  <script>
+    const tutorialSteps = [
+      {
+        step: "Step 1: Upload Your Image",
+        icon: "upload-cloud",
+        content: `Go to the homepage of MagicBG and click on the <strong>"Upload Image"</strong> button. Choose an image from your device in JPG, PNG, or WEBP format. For best results, use a high-resolution image with a clear foreground.`
+      },
+      {
+        step: "Step 2: Background Removed Instantly",
+        icon: "wand-2",
+        content: `Once uploaded, our AI automatically detects the subject and removes the background in a matter of seconds. You’ll see a preview with a transparent background.`
+      },
+      {
+        step: "Step 3: Edit If Needed",
+        icon: "edit-3",
+        content: `You can optionally adjust the cutout using built-in tools like crop, zoom, or background fill. You can even add a solid background color or image if desired.`
+      },
+      {
+        step: "Step 4: Download Your Image",
+        icon: "download",
+        content: `Click on the <strong>"Download"</strong> button to save the image as a transparent PNG. Your image is now ready for websites, presentations, or marketing use.`
+      },
+      {
+        step: "Bonus: Use the API (for Developers)",
+        icon: "terminal",
+        content: `Developers can automate background removal via our REST API. Read our <a href="documentation.html" class="text-cyan-400 underline">API Documentation</a> to learn how to send image requests programmatically.`
+      },
+      {
+        step: "Need Help?",
+        icon: "help-circle",
+        content: `If you're stuck or have questions, visit our <a href="help.html" class="text-cyan-400 underline">Help Center</a> or <a href="contact.html" class="text-cyan-400 underline">Contact Support</a>. We're happy to help!`
+      }
+    ];
+
+    const container = document.getElementById("steps");
+
+    tutorialSteps.forEach(step => {
+      const div = document.createElement("div");
+      div.className = "bg-gray-800 p-6 rounded-xl shadow-md animate__animated animate__fadeInUp";
+      div.innerHTML = `
+        <div class="flex items-center gap-3 mb-3">
+          <i data-lucide="${step.icon}" class="w-6 h-6 text-cyan-400"></i>
+          <h2>${step.step}</h2>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed">${step.content}</p>
+      `;
+      container.appendChild(div);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

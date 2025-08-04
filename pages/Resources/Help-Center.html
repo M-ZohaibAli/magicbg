@@ -1,0 +1,106 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Help Center - MagicBG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script type="module">
+    import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+    window.addEventListener('DOMContentLoaded', () => createIcons({ icons }));
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+    h2 {
+      @apply text-xl font-semibold text-cyan-400 mb-2;
+    }
+    p {
+      @apply text-gray-300 mb-3;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Help Center Content -->
+  <section class="container mx-auto px-6 py-16 flex-grow animate__animated animate__fadeIn">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400">Help Center</h1>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        Answers to common questions about MagicBG and background removal. Still stuck?
+        <a href="contact.html" class="text-cyan-400 underline hover:text-cyan-300">Contact our team</a>.
+      </p>
+    </div>
+
+    <div id="helpSections" class="max-w-4xl mx-auto space-y-10">
+      <!-- JS inserts help topics here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer" class="mt-auto"></div>
+<script src="/pages/script.js"></script>
+
+  <script>
+    const helpTopics = [
+      {
+        title: "What is MagicBG?",
+        icon: "info",
+        answer: `MagicBG is an AI-powered tool that removes image backgrounds in seconds. Upload your image, and our tool will process it automatically.`
+      },
+      {
+        title: "Is MagicBG free to use?",
+        icon: "badge-dollar-sign",
+        answer: `You can use MagicBG for free with limited daily conversions. For unlimited access and premium features, upgrade to a paid plan.`
+      },
+      {
+        title: "Why is my image not processing?",
+        icon: "alert-triangle",
+        answer: `Check that your image is in JPEG, PNG, or WEBP format and under 25MB. If it still fails, try a different image or contact support.`
+      },
+      {
+        title: "Is there an API available?",
+        icon: "server",
+        answer: `Yes. Developers can access MagicBG through a REST API with key-based authentication. See the <a href="documentation.html" class="text-cyan-400 underline">documentation</a>.`
+      },
+      {
+        title: "Can I use MagicBG for commercial use?",
+        icon: "briefcase",
+        answer: `Absolutely. All processed images are yours to use freely in commercial or personal projects.`
+      },
+      {
+        title: "How do I contact support?",
+        icon: "mail",
+        answer: `You can reach us via the <a href="contact.html" class="text-cyan-400 underline">contact form</a>. We usually respond within 24 hours.`
+      }
+    ];
+
+    const container = document.getElementById("helpSections");
+
+    helpTopics.forEach(topic => {
+      const div = document.createElement("div");
+      div.className = "bg-gray-800 p-6 rounded-xl shadow-md animate__animated animate__fadeInUp";
+      div.innerHTML = `
+        <div class="flex items-center gap-3 mb-3">
+          <i data-lucide="${topic.icon}" class="w-6 h-6 text-cyan-400"></i>
+          <h2>${topic.title}</h2>
+        </div>
+        <p class="text-sm md:text-base leading-relaxed">${topic.answer}</p>
+      `;
+      container.appendChild(div);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

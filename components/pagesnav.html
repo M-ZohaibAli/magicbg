@@ -1,0 +1,95 @@
+<style>
+  #navb {
+    background: radial-gradient(circle at top, #030c22, #000000);
+  }
+
+  #head {
+    color: rgb(34 211 238 / var(--tw-text-opacity, 1));
+  }
+
+  .nav-link {
+    @apply text-gray-300 hover:text-cyan-400 px-4 py-2 text-sm font-medium transition duration-300;
+  }
+
+  .nav-link.active {
+    @apply text-cyan-400 font-semibold border-b-2 border-cyan-400;
+  }
+
+  .mobile-nav-link {
+    @apply text-gray-300 hover:text-cyan-400 px-3 py-2 text-base font-medium transition duration-300;
+  }
+</style>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<!-- Navbar -->
+<nav id="navb" class="shadow-lg sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex justify-between items-center h-16">
+
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <i class="bi bi-magic text-2xl text-purple-600 mr-2"></i>
+        <span id="head" class="text-xl font-bold">MagicBG</span>
+      </div>
+
+      <!-- Primary Nav -->
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/index.html" class="nav-link active">Home</a>
+        <a href="/pages/Company/AboutUs.html" class="nav-link">About Us</a>
+        <a href="/pages/Company/Contact.html" class="nav-link">Contact Us</a>
+        <a href="/pages/Company/Blog.html" class="nav-link">Blog</a>
+        <a href="/pages/Legal/Privacy-Policy.html" class="nav-link">Privacy Policy</a>
+        <a href="/pages/Resources/Tutorials.html" class="nav-link">Tutorials</a>
+        <a href="/pages/Company/Careers.html" class="nav-link">Careers</a>
+      </div>
+
+      <!-- Icons -->
+      <div class="hidden md:flex items-center space-x-5">
+        <a href="#" class="text-gray-300 hover:text-purple-500 transition">
+          <i class="bi bi-heart text-xl"></i>
+        </a>
+        <a href="#" class="text-gray-300 hover:text-purple-500 transition">
+          <i class="bi bi-cart3 text-xl"></i>
+        </a>
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-300 hover:text-cyan-400 focus:outline-none">
+          <i class="bi bi-list text-2xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden bg-black border-t border-gray-800">
+    <div class="px-4 py-3 space-y-2">
+      <a href="/index.html" class="mobile-nav-link block active">Home</a>
+      <a href="/pages/Company/AboutUs.html" class="mobile-nav-link block">About Us</a>
+      <a href="/pages/Company/Contact.html" class="mobile-nav-link block">Contact Us</a>
+      <a href="/pages/Company/Blog.html" class="mobile-nav-link block">Blog</a>
+      <a href="/pages/Legal/Privacy-Policy.html" class="mobile-nav-link block">Privacy Policy</a>
+      <a href="/pages/Resources/Tutorials.html" class="mobile-nav-link block">Tutorials</a>
+      <a href="/pages/Company/Careers.html" class="mobile-nav-link block">Careers</a>
+      <div class="pt-4 border-t border-gray-700">
+        <a href="#" class="block text-gray-300 hover:text-purple-400 py-2">
+          <i class="bi bi-heart mr-2"></i> Favorites
+        </a>
+        <a href="#" class="block text-gray-300 hover:text-purple-400 py-2">
+          <i class="bi bi-cart3 mr-2"></i> Cart
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Toggle script -->
+<script>
+  document.getElementById("mobile-menu-button").addEventListener("click", function () {
+    const menu = document.getElementById("mobile-menu");
+    menu.classList.toggle("hidden");
+  });
+</script>

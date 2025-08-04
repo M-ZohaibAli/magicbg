@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Documentation - MagicBG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script type="module">
+    import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+    window.addEventListener('DOMContentLoaded', () => createIcons({ icons }));
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+    h2 {
+      @apply text-2xl font-semibold text-cyan-400 mb-2;
+    }
+    p {
+      @apply text-gray-300 mb-4;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Documentation Content -->
+  <section class="container mx-auto px-6 py-16 flex-grow animate__animated animate__fadeIn">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400">MagicBG Documentation</h1>
+      <p class="mt-4 text-lg text-gray-300 max-w-3xl mx-auto">
+        Learn how to use MagicBG, the AI-powered background remover tool developed by <span class="text-white font-semibold">CodeOxide</span> and operated by <span class="text-white font-semibold">MagicBG</span>.
+      </p>
+    </div>
+
+    <div id="docSections" class="max-w-4xl mx-auto space-y-12">
+      <!-- JavaScript will populate documentation sections -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer" class="mt-auto"></div>
+<script src="/pages/script.js"></script>
+
+  <script>
+    const documentationSections = [
+      {
+        title: "What is MagicBG?",
+        icon: "wand",
+        content: `MagicBG is a cutting-edge web tool that removes backgrounds from images using high-quality AI models through multiple APIs. Whether you're a designer, developer, or content creator, MagicBG simplifies the editing process with one click.`
+      },
+      {
+        title: "How It Works",
+        icon: "cpu",
+        content: `MagicBG sends your image to a pool of AI-powered background removal APIs. These APIs analyze the image, detect the subject, and return a clean cut-out image. It selects the best result automatically, ensuring speed and precision.`
+      },
+      {
+        title: "API Integration",
+        icon: "code",
+        content: `You can integrate MagicBG via REST API. Just send a POST request to our endpoint with your image file. You’ll get a transparent background image in response. Authentication via API key is required. Visit the developer portal for code examples.`
+      },
+      {
+        title: "Supported Formats",
+        icon: "image",
+        content: `MagicBG supports JPEG, PNG, and WEBP image formats up to 25MB. The tool returns PNG images with transparent backgrounds.`
+      },
+      {
+        title: "Tips & Best Practices",
+        icon: "lightbulb",
+        content: `
+          • Use high-resolution images with clear foreground subjects.<br/>
+          • Avoid busy or blurry backgrounds for best accuracy.<br/>
+          • Combine with shadow or background fill tools for polished results.`
+      },
+      {
+        title: "FAQs",
+        icon: "help-circle",
+        content: `
+          <strong>Q:</strong> Is MagicBG free?<br/>
+          <strong>A:</strong> It offers free trials with limits. Premium plans unlock full features.<br/><br/>
+          <strong>Q:</strong> Can I use MagicBG in commercial projects?<br/>
+          <strong>A:</strong> Yes, you retain full rights to your outputs.`
+      }
+    ];
+
+    const container = document.getElementById("docSections");
+
+    documentationSections.forEach(section => {
+      const div = document.createElement("div");
+      div.className = "bg-gray-800 p-6 rounded-xl shadow-md animate__animated animate__fadeInUp";
+      div.innerHTML = `
+        <div class="flex items-center gap-3 mb-4">
+          <i data-lucide="${section.icon}" class="w-6 h-6 text-cyan-400"></i>
+          <h2>${section.title}</h2>
+        </div>
+        <p class="text-gray-300 leading-relaxed text-sm md:text-base">${section.content}</p>
+      `;
+      container.appendChild(div);
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

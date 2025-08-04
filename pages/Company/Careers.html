@@ -1,0 +1,105 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers - MagicBG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <script type="module">
+    import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+    window.addEventListener('DOMContentLoaded', () => createIcons({ icons }));
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- Careers Section -->
+  <section class="container mx-auto px-6 py-16 flex-grow animate__animated animate__fadeIn">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400">Join the MagicBG Team</h1>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        We're always looking for passionate creators, developers, and innovators to help us push the boundaries of background removal tech.
+      </p>
+    </div>
+
+    <div id="jobListings" class="grid md:grid-cols-2 gap-8">
+      <!-- Jobs will be injected here -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer" class="mt-auto"></div>
+<script src="/pages/script.js"></script>
+
+  <!-- JavaScript to manage jobs -->
+  <script>
+    const jobs = [
+      {
+        title: 'Frontend Developer',
+        type: 'Full Time',
+        location: 'Remote',
+        icon: 'monitor',
+        description: 'Craft sleek UI for our tools using Tailwind CSS, React, and other frontend frameworks.'
+      },
+      {
+        title: 'Backend Engineer',
+        type: 'Full Time',
+        location: 'Remote',
+        icon: 'server',
+        description: 'Work on integrating and optimizing high-quality API pipelines for background removal.'
+      },
+      {
+        title: 'AI Research Intern',
+        type: 'Internship',
+        location: 'Remote',
+        icon: 'brain-circuit',
+        description: 'Research AI/ML models to improve MagicBG’s smart segmentation performance.'
+      },
+      {
+        title: 'Content Strategist',
+        type: 'Part Time',
+        location: 'Remote',
+        icon: 'pen-tool',
+        description: 'Drive content initiatives and promote product features to increase brand reach.'
+      }
+    ];
+
+    const container = document.getElementById('jobListings');
+
+    jobs.forEach(job => {
+      const card = document.createElement('div');
+      card.className = 'bg-gray-800 rounded-2xl p-6 shadow-lg animate__animated animate__fadeInUp';
+      card.innerHTML = `
+        <div class="flex items-center gap-4 mb-4">
+          <i data-lucide="${job.icon}" class="w-8 h-8 text-cyan-400"></i>
+          <div>
+            <h3 class="text-xl font-semibold">${job.title}</h3>
+            <p class="text-gray-400 text-sm">${job.type} · ${job.location}</p>
+          </div>
+        </div>
+        <p class="text-gray-300 text-sm mb-4">${job.description}</p>
+        <button class="bg-cyan-500 hover:bg-cyan-600 transition text-white px-4 py-2 rounded-lg font-medium">
+          Apply Now
+        </button>
+      `;
+      container.appendChild(card);
+    });
+
+    // Load icons
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+
+</body>
+</html>

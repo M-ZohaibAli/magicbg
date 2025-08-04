@@ -1,0 +1,70 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - MagicBG</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <script type="module">
+    import { createIcons, icons } from 'https://unpkg.com/lucide@latest/dist/esm/lucide.js';
+    window.addEventListener('DOMContentLoaded', () => createIcons({ icons }));
+  </script>
+  <style>
+    body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+  </style>
+</head>
+<body class="text-white min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <div id="navbar"></div>
+
+  <!-- About Us Section -->
+  <section class="container mx-auto px-6 py-16 flex-grow animate__animated animate__fadeIn">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-cyan-400">About MagicBG</h1>
+      <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">
+        MagicBG is your ultimate AI-powered background remover, integrating top-tier APIs for lightning-fast and high-quality results.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-2xl font-semibold text-cyan-300 mb-4">What We Do</h2>
+        <p class="text-gray-400 leading-relaxed">
+          We simplify background removal using advanced AI from multiple high-quality APIs. Whether it's for ecommerce, personal design, or marketing, MagicBG delivers crisp, clean images in seconds—no technical skills needed.
+        </p>
+      </div>
+      <div class="flex justify-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965567.png" alt="Background Removal Icon" class="w-40 h-40 animate__animated animate__zoomIn" />
+      </div>
+    </div>
+
+    <div class="mt-16 grid md:grid-cols-3 gap-8 text-center">
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transition-all duration-300">
+        <i data-lucide="zap" class="w-10 h-10 mx-auto text-cyan-400"></i>
+        <h3 class="mt-4 text-xl font-semibold">Fast API Integration</h3>
+        <p class="text-gray-400 mt-2 text-sm">MagicBG uses multiple premium APIs to ensure fast and accurate background removal.</p>
+      </div>
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transition-all duration-300">
+        <i data-lucide="wand" class="w-10 h-10 mx-auto text-cyan-400"></i>
+        <h3 class="mt-4 text-xl font-semibold">AI Precision</h3>
+        <p class="text-gray-400 mt-2 text-sm">Powered by cutting-edge AI to detect and erase backgrounds without manual input.</p>
+      </div>
+      <div class="bg-gray-800 rounded-2xl p-6 shadow-lg hover:scale-105 transition-all duration-300">
+        <i data-lucide="code" class="w-10 h-10 mx-auto text-cyan-400"></i>
+        <h3 class="mt-4 text-xl font-semibold">Developed by CodeOxide</h3>
+        <p class="text-gray-400 mt-2 text-sm">This innovative tool is proudly developed by CodeOxide, your trusted digital solutions partner.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div id="footer" class="mt-auto"></div>
+<script src="/pages/script.js"></script>
+</body>
+</html>

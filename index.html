@@ -33,77 +33,97 @@
     .faq-toggle.active .bi-chevron-down {
       transform: rotate(180deg);
     }
+
 </style>
+  <!-- Navbar -->
+  <style>
+    .nav-link {
+      @apply text-gray-300 hover:text-cyan-400 px-4 py-2 text-sm font-medium transition duration-300;
+    }
+    .nav-link.active {
+      @apply text-cyan-400 font-semibold border-b-2 border-cyan-400;
+    }
+    .mobile-nav-link {
+      @apply text-gray-700 hover:text-cyan-600 px-3 py-2 text-base font-medium transition duration-300;
+    }
+body {
+      background: radial-gradient(circle at top, #0f172a, #020617);
+      font-family: 'Raleway', sans-serif;
+    }
+  </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 to-purple-50">
-    <!-- Navbar -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center">
-                    <i class="bi bi-magic text-2xl text-purple-600 mr-2"></i>
-                    <span class="text-xl font-bold text-gray-800">MagicBG</span>
-                </div>
-                
-                <!-- Primary Nav -->
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <a href="#features" class="nav-link">Features</a>
-                    <a href="#how-it-works" class="nav-link">How It Works</a>
-                    <a href="#pricing" class="nav-link">Pricing</a>
-                    <a href="#gallery" class="nav-link">Gallery</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#contact" class="nav-link">Contact</a>
-                </div>
-                
-                <!-- Secondary Nav -->
-                <div class="hidden md:flex items-center space-x-3 ml-6">
-                    <a href="#" class="text-gray-600 hover:text-purple-600">
-                        <i class="bi bi-person-circle text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-purple-600">
-                        <i class="bi bi-heart text-xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-600 hover:text-purple-600">
-                        <i class="bi bi-cart3 text-xl"></i>
-                    </a>
-                </div>
-                
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-purple-600 focus:outline-none">
-                        <i class="bi bi-list text-2xl"></i>
-                    </button>
-                </div>
+  
+      
+      <!-- Navbar -->
+      <nav class="text-white bg-black shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex justify-between items-center h-16">
+            
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+              <i class="bi bi-magic text-2xl text-purple-500 mr-2"></i>
+              <span class="text-xl font-bold text-cyan-400">MagicBG</span>
             </div>
-        </div>
-        
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="mobile-nav-link block active">Home</a>
-                <a href="#features" class="mobile-nav-link block">Features</a>
-                <a href="#how-it-works" class="mobile-nav-link block">How It Works</a>
-                <a href="#pricing" class="mobile-nav-link block">Pricing</a>
-                <a href="#gallery" class="mobile-nav-link block">Gallery</a>
-                <a href="#faq" class="mobile-nav-link block">FAQ</a>
-                <a href="#contact" class="mobile-nav-link block">Contact</a>
-                <div class="pt-4 border-t">
-                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
-                        <i class="bi bi-person-circle mr-2"></i> Account
-                    </a>
-                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
-                        <i class="bi bi-heart mr-2"></i> Favorites
-                    </a>
-                    <a href="#" class="block text-gray-600 hover:text-purple-600 py-2">
-                        <i class="bi bi-cart3 mr-2"></i> Cart
-                    </a>
-                </div>
+      
+            <!-- Primary Nav (desktop) -->
+            <div class="hidden md:flex space-x-6">
+              <a href="#home" class="nav-link active">Home</a>
+              <a href="#features" class="nav-link">Features</a>
+              <a href="#how-it-works" class="nav-link">How It Works</a>
+              <a href="#pricing" class="nav-link">Pricing</a>
+              <a href="#gallery" class="nav-link">Gallery</a>
+              <a href="#faq" class="nav-link">FAQ</a>
+              <a href="#contact" class="nav-link">Contact</a>
             </div>
+      
+            <!-- Icons (desktop) -->
+            <div class="hidden md:flex items-center space-x-5">
+              <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                <i class="bi bi-person-circle text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                <i class="bi bi-heart text-xl"></i>
+              </a>
+              <a href="#" class="text-gray-400 hover:text-purple-400 transition">
+                <i class="bi bi-cart3 text-xl"></i>
+              </a>
+            </div>
+      
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+              <button id="mobile-menu-button" class="text-gray-300 hover:text-cyan-400 focus:outline-none">
+                <i class="bi bi-list text-2xl"></i>
+              </button>
+            </div>
+          </div>
         </div>
-    </nav>
-
+      
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-black border-t border-gray-700">
+          <div class="px-4 pt-4 pb-3 space-y-2">
+            <a href="#home" class="mobile-nav-link block active">Home</a>
+            <a href="#features" class="mobile-nav-link block">Features</a>
+            <a href="#how-it-works" class="mobile-nav-link block">How It Works</a>
+            <a href="#pricing" class="mobile-nav-link block">Pricing</a>
+            <a href="#gallery" class="mobile-nav-link block">Gallery</a>
+            <a href="#faq" class="mobile-nav-link block">FAQ</a>
+            <a href="#contact" class="mobile-nav-link block">Contact</a>
+            <div class="pt-4 border-t border-gray-600">
+              <a href="#" class="block text-gray-300 hover:text-purple-400 py-2">
+                <i class="bi bi-person-circle mr-2"></i> Account
+              </a>
+              <a href="#" class="block text-gray-300 hover:text-purple-400 py-2">
+                <i class="bi bi-heart mr-2"></i> Favorites
+              </a>
+              <a href="#" class="block text-gray-300 hover:text-purple-400 py-2">
+                <i class="bi bi-cart3 mr-2"></i> Cart
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+      
     <!-- Hero Section -->
     <section id="home" class="py-16 md:py-24 bg-gradient-to-r from-blue-100 to-purple-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -309,7 +329,7 @@
     </div>
 </div>
 </div>
-    <!-- Pricing Section -->
+    <!-- Pricing Section
     <section id="pricing" class="py-16 bg-gradient-to-br from-blue-50 to-purple-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="text-center mb-16">
@@ -318,7 +338,7 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Free Plan -->
+                <!-- Free Plan 
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-1">Free</h3>
@@ -354,8 +374,8 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Pro Plan -->
+            
+                <!-- Pro Plan 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden border-2 border-purple-500 transform hover:scale-105 transition duration-300 relative">
                     <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">
                         POPULAR
@@ -395,7 +415,7 @@
                     </div>
                 </div>
                 
-                <!-- Enterprise Plan -->
+                <!-- Enterprise Plan --
                 <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition duration-300">
                     <div class="p-6">
                         <h3 class="text-xl font-semibold text-gray-800 mb-1">Enterprise</h3>
@@ -440,7 +460,7 @@
                 </button>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Gallery Section -->
     <section id="gallery" class="py-16 bg-white">
@@ -452,29 +472,24 @@
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?portrait" alt="Gallery 1" class="w-full h-full object-cover">
+                    <img src="/img/1.png" alt="Gallery 1" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?product" alt="Gallery 2" class="w-full h-full object-cover">
+                    <img src="/img/2.png" alt="Gallery 2" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?animal" alt="Gallery 3" class="w-full h-full object-cover">
+                    <img src="/img/3.png" alt="Gallery 3" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?fashion" alt="Gallery 4" class="w-full h-full object-cover">
+                    <img src="/img/4.png" alt="Gallery 4" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?food" alt="Gallery 5" class="w-full h-full object-cover">
+                    <img src="/img/5.png" alt="Gallery 5" class="w-full h-full object-cover">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?nature" alt="Gallery 6" class="w-full h-full object-cover">
+                    <img src="/img/6.png" alt="Gallery 6" class="w-full h-full object-cover">
                 </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?architecture" alt="Gallery 7" class="w-full h-full object-cover">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://source.unsplash.com/random/300x300?tech" alt="Gallery 8" class="w-full h-full object-cover">
-                </div>
+               
             </div>
             
             <div class="mt-12 text-center">
@@ -707,8 +722,8 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-800">Email</h4>
-                                <p class="text-gray-600">support@magicbg.com</p>
-                                <p class="text-gray-600">sales@magicbg.com</p>
+                                <p class="text-gray-600">codeoxideofficial@gmail.com</p>
+                                <!-- <p class="text-gray-600">sales@magicbg.com</p> -->
                             </div>
                         </div>
                         
@@ -718,8 +733,8 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-800">Phone</h4>
-                                <p class="text-gray-600">+1 (555) 123-4567 (Support)</p>
-                                <p class="text-gray-600">+1 (555) 987-6543 (Sales)</p>
+                                <p class="text-gray-600">+92 3429624031(Sales)</p>
+                                <!-- <p class="text-gray-600">+1 (555) 987-6543 (Sales)</p> -->
                             </div>
                         </div>
                         
@@ -729,12 +744,12 @@
                             </div>
                             <div class="ml-4">
                                 <h4 class="text-lg font-medium text-gray-800">Address</h4>
-                                <p class="text-gray-600">123 AI Street, Suite 456</p>
-                                <p class="text-gray-600">San Francisco, CA 94107</p>
+                                <p class="text-gray-600">Attock, Punjab, Kamra</p>
+                                <!-- <p class="text-gray-600">San Francisco, CA 94107</p> -->
                             </div>
                         </div>
                         
-                        <div class="flex items-start">
+                        <!-- <div class="flex items-start">
                             <div class="flex-shrink-0 bg-yellow-100 rounded-lg p-3">
                                 <i class="bi bi-clock text-yellow-600 text-xl"></i>
                             </div>
@@ -744,7 +759,7 @@
                                 <p class="text-gray-600">Saturday - Sunday: Closed</p>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     
                     <div class="mt-8">
                         <h4 class="text-lg font-medium text-gray-800 mb-4">Follow Us</h4>
@@ -772,94 +787,94 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="grid md:grid-cols-5 gap-8 mb-12">
-                <!-- Column 1 -->
-                <div class="md:col-span-2">
-                    <div class="flex items-center mb-4">
-                        <i class="bi bi-magic text-2xl text-purple-400 mr-2"></i>
-                        <span class="text-xl font-bold">MagicBG</span>
-                    </div>
-                    <p class="text-gray-400 mb-4">The fastest, most accurate background remover powered by AI.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="bi bi-facebook text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="bi bi-twitter text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="bi bi-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white">
-                            <i class="bi bi-linkedin text-xl"></i>
-                        </a>
-                    </div>
+      <!-- Footer -->
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid md:grid-cols-5 gap-8 mb-12">
+            <!-- Column 1 -->
+            <div class="md:col-span-2">
+                <div class="flex items-center mb-4">
+                    <i class="bi bi-magic text-2xl text-purple-400 mr-2"></i>
+                    <span class="text-xl font-bold">MagicBG</span>
                 </div>
-                
-                <!-- Column 2 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Product</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Changelog</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 3 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Company</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 4 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Resources</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Documentation</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Help Center</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Community</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Tutorials</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Webinars</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 5 -->
-                <div>
-                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Terms of Service</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">GDPR</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white">CCPA</a></li>
-                    </ul>
+                <p class="text-gray-400 mb-4">The fastest, most accurate background remover powered by AI.</p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="bi bi-facebook text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="bi bi-twitter text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="bi bi-instagram text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="bi bi-linkedin text-xl"></i>
+                    </a>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8">
-                <div class="md:flex md:justify-between md:items-center">
-                    <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 MagicBG. All rights reserved.</p>
-                    <div class="flex space-x-6">
-                        <a href="#" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
-                        <a href="#" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
-                        <a href="#" class="text-gray-400 hover:text-white text-sm">Cookies</a>
-                    </div>
+            <!-- Column 2 -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Product</h4>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">API</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Integrations</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Changelog</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 3 -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Company</h4>
+                <ul class="space-y-2">
+                    <li><a href="/pages/Company/AboutUs.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="/pages/Company/Careers.html" class="text-gray-400 hover:text-white">Careers</a></li>
+                    <li><a href="/pages/Company/Blog.html" class="text-gray-400 hover:text-white">Blog</a></li>
+                    <li><a href="/pages/Company/Press.html" class="text-gray-400 hover:text-white">Press</a></li>
+                    <li><a href="/pages/Company/Contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            
+            <!-- Column 4 -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Resources</h4>
+                <ul class="space-y-2">
+                    <li><a href="/pages/Resources/Documentation.html" class="text-gray-400 hover:text-white">Documentation</a></li>
+                    <li><a href="/pages/Resources/Help-Center.html" class="text-gray-400 hover:text-white">Help Center</a></li>
+                    <li><a href="/pages/Resources/Tutorials.html" class="text-gray-400 hover:text-white">Tutorials</a></li>
+                    <li><a href="/pages/Resources/Webinars.html" class="text-gray-400 hover:text-white">Webinars</a></li>
+                    <!-- <li><a href="#" class="text-gray-400 hover:text-white">Webinars</a></li> -->
+                </ul>
+            </div>
+            
+            <!-- Column 5 -->
+            <div>
+                <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                <ul class="space-y-2">
+                    <li><a href="/pages/Legal/Privacy-Policy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    <li><a href="/pages/Legal/Terms.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                    <li><a href="/pages/Legal/Cookie Policy.html" class="text-gray-400 hover:text-white">Cookie Policy</a></li>
+                    <li><a href="/pages/Legal/GDPR.html" class="text-gray-400 hover:text-white">GDPR</a></li>
+                    <li><a href="/pages/Legal/CCPA.html" class="text-gray-400 hover:text-white">CCPA</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8">
+            <div class="md:flex md:justify-between md:items-center">
+                <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 MagicBG. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="/pages/Legal/Privacy-Policy.html" class="text-gray-400 hover:text-white text-sm">Privacy Policy</a>
+                    <a href="/pages/Legal/Terms.html" class="text-gray-400 hover:text-white text-sm">Terms of Service</a>
+                    <a href="/pages/Legal/Cookie-Policy.html" class="text-gray-400 hover:text-white text-sm">Cookies</a>
                 </div>
             </div>
         </div>
-    </footer>
-
+    </div>
+</footer>
     <!-- Back to Top Button -->
     <button id="back-to-top" class="fixed bottom-8 right-8 bg-purple-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition duration-300 opacity-0 invisible hover:bg-purple-700">
         <i class="bi bi-arrow-up"></i>
@@ -867,5 +882,68 @@
 
     <!-- Scripts -->
     <script src="script.js"></script>
+    <!-- Firebase App (Core SDK) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<!-- Realtime Database -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script>
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+  
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+  </script>
+<script>
+    const form = document.querySelector("form");
+  
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+  
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const subject = document.getElementById("subject").value.trim();
+      const message = document.getElementById("message").value.trim();
+  
+      if (!name || !email || !subject || !message) {
+        alert("Please fill in all fields.");
+        return;
+      }
+  
+      const newMessageRef = database.ref("messages").push();
+      newMessageRef.set({
+        name,
+        email,
+        subject,
+        message,
+        timestamp: Date.now()
+      })
+      .then(() => {
+        alert("Message sent successfully!");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Error saving message:", error);
+        alert("An error occurred. Please try again.");
+      });
+    });
+  </script>
+  
+<!-- rules : {
+    "rules": {
+      "messages": {
+        ".read": false,
+        ".write": true
+      }
+    }
+  }
+       -->
 </body>
 </html>
