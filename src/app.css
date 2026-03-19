@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Navbar Styles */
+.nav-link {
+  color: #d1d5db;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #22d3ee;
+}
+
+.nav-link.active {
+  color: #22d3ee;
+  font-weight: 600;
+  border-bottom: 2px solid #22d3ee;
+}
+
+.mobile-nav-link {
+  color: #374151;
+  padding: 0.75rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  text-decoration: none;
+  display: block;
+}
+
+.mobile-nav-link:hover {
+  color: #0891b2;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate__fadeInLeft {
+  animation: fadeInLeft 1s ease-out;
+}
+
+.animate__fadeInRight {
+  animation: fadeInRight 1s ease-out;
+}
+
+/* FAQ Accordion */
+.faq-content {
+  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+}
+
+.faq-content.active {
+  max-height: 500px;
+}
+
+.faq-toggle .bi-chevron-down {
+  transition: transform 0.3s ease;
+}
+
+.faq-toggle.active .bi-chevron-down {
+  transform: rotate(180deg);
+}
+
+/* Social Icons */
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: opacity 0.3s;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
